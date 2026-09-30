@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart University Transport</title>
+<style>
+:root{--blue:#2457d6;--navy:#14264b;--muted:#64748b;--bg:#f4f7fc;--green:#15945a}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:#17233d}
+header{height:72px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(5%,calc((100% - 1160px)/2));box-shadow:0 2px 12px #10234a0d;position:sticky;top:0;z-index:2}
+.brand{display:flex;gap:10px;align-items:center;font-weight:800;color:var(--navy)}.logo{width:38px;height:38px;border-radius:12px;background:var(--blue);color:white;display:grid;place-items:center;font-size:20px}
+nav{display:flex;gap:24px;align-items:center}nav a{color:#475569;text-decoration:none;font-size:14px;font-weight:600}button,.btn{border:0;background:var(--blue);color:#fff;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}button:hover,.btn:hover{filter:brightness(.94)}.secondary{background:#eaf0ff;color:var(--blue)}.ghost{background:#fff;color:var(--navy);border:1px solid #dbe3f0}
+main{max-width:1160px;margin:auto;padding:38px 24px 60px}.page{display:none}.page.active{display:block}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center;padding:58px 0}.eyebrow{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.08;margin:14px 0;color:var(--navy)}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:570px}.hero-art{background:linear-gradient(145deg,#dce8ff,#eef4ff);border-radius:28px;min-height:310px;display:grid;place-items:center;position:relative;overflow:hidden}.bus-emoji{font-size:145px;filter:drop-shadow(0 18px 15px #1b3b8025)}.route-line{position:absolute;width:85%;height:3px;background:#8eafff;bottom:58px;transform:rotate(-12deg)}.stop{position:absolute;width:16px;height:16px;border:4px solid var(--blue);background:white;border-radius:50%;bottom:49px}.stop.one{left:14%}.stop.two{right:16%}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}.feature,.card{background:white;border:1px solid #e5eaf3;border-radius:18px;padding:22px;box-shadow:0 8px 24px #10234a08}.feature .ico{font-size:26px}.feature h3{margin:12px 0 6px}.feature p{color:var(--muted);line-height:1.5;font-size:14px;margin:0}
+.login-wrap{min-height:70vh;display:grid;place-items:center}.login{width:min(100%,430px);padding:32px}.login h1{margin:8px 0}.muted{color:var(--muted)}label{display:block;font-size:13px;font-weight:700;margin:17px 0 7px}input,select{width:100%;padding:13px 14px;border:1px solid #d8e0ed;border-radius:10px;font:inherit;background:#fff;outline:none}input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2457d61c}.password{display:flex;gap:8px}.password input{flex:1}.password button{padding:0 12px;background:#edf2ff;color:var(--blue)}.full{width:100%;margin-top:22px}.error{color:#c2410c;font-size:13px;min-height:18px;margin-top:8px}
+.dash-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}.dash-head h1{margin:0;color:var(--navy)}.pill{font-size:12px;font-weight:800;color:#176b47;background:#e1f7ec;border-radius:30px;padding:8px 12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px}.stat{background:white;border:1px solid #e5eaf3;border-radius:16px;padding:18px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:8px;color:var(--navy)}.dash-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.card h2{font-size:18px;margin:0 0 16px}.route-row{display:flex;align-items:center;gap:12px;margin:12px 0}.route-icon{background:#edf2ff;border-radius:12px;padding:12px;font-size:22px}.route-row .info{flex:1}.info strong{display:block}.info small{color:var(--muted)}.map{height:170px;background:#edf3ff;border-radius:14px;position:relative;overflow:hidden;margin:8px 0 15px;background-image:linear-gradient(35deg,transparent 47%,#d1def9 48%,#d1def9 51%,transparent 52%),linear-gradient(120deg,transparent 46%,#d1def9 47%,#d1def9 50%,transparent 51%)}.map:before{content:"";position:absolute;width:72%;height:5px;background:#6c91f2;left:13%;top:55%;transform:rotate(-18deg);border-radius:10px}.pin{position:absolute;z-index:1;font-size:25px}.pin.a{left:12%;top:53%}.pin.b{right:13%;top:28%}.map-label{position:absolute;right:12px;bottom:10px;background:white;padding:5px 8px;border-radius:7px;font-size:11px;color:var(--muted)}
+.status{padding:12px;border-radius:10px;background:#f0fdf4;color:#166534;font-size:13px;margin-top:12px;display:none}.announcement{padding:12px 0;border-bottom:1px solid #edf0f5}.announcement:last-child{border:0}.announcement strong{font-size:14px}.announcement p{font-size:13px;color:var(--muted);margin:5px 0 0}
+footer{background:#14264b;color:#dce5f8;padding:25px max(5%,calc((100% - 1160px)/2));display:flex;justify-content:space-between;gap:12px;font-size:13px}
+@media(max-width:750px){header{padding:0 18px}nav{gap:10px}nav a{display:none}.hero{grid-template-columns:1fr;padding:35px 0}.hero-art{min-height:220px}.bus-emoji{font-size:110px}.features,.stats{grid-template-columns:1fr}.dash-grid{grid-template-columns:1fr}.dash-head{align-items:flex-start;flex-direction:column}main{padding:24px 16px 40px}footer{padding:22px 18px;flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">🚌</div><span>Smart Transport</span></div>
+  <nav><a href="#" onclick="showPage('home')">Home</a><a href="#features" onclick="showPage('home')">Features</a><button onclick="showPage('login')">Login</button></nav>
+</header>
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div><div class="eyebrow">University shuttle management</div><h1>Your campus journey, made smarter.</h1><p>Track university shuttles, check route information, and manage your transport attendance through one simple platform.</p><button onclick="showPage('login')">Get Started →</button> <button class="secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Explore features</button></div>
+    <div class="hero-art"><div class="bus-emoji">🚌</div><div class="route-line"></div><div class="stop one"></div><div class="stop two"></div></div>
+  </div>
+  <div id="features" class="features">
+    <div class="feature"><div class="ico">📍</div><h3>Shuttle tracking</h3><p>View shuttle location and estimated arrival information.</p></div>
+    <div class="feature"><div class="ico">💺</div><h3>Seat availability</h3><p>Check route-wise seat availability before travelling.</p></div>
+    <div class="feature"><div class="ico">🗓️</div><h3>Online attendance</h3><p>Mark transport attendance and view its current status.</p></div>
+  </div>
+</section>
+<section id="login" class="page">
+  <div class="login-wrap"><form class="card login" onsubmit="login(event)">
+    <div class="eyebrow">Welcome back</div><h1>Sign in</h1><p class="muted">Enter your details to access transport services.</p>
+    <label for="role">User role</label><select id="role"><option>Day Scholar</option><option>Hostelite</option><option>Conductor</option><option>Admin</option></select>
+    <label for="email">Email or student ID</label><input id="email" type="text" placeholder="e.g. student@university.edu" required>
+    <label for="password">Password</label><div class="password"><input id="password" type="password" placeholder="Enter password" required minlength="4"><button type="button" onclick="togglePassword()" aria-label="Show or hide password">Show</button></div>
+    <div id="loginError" class="error"></div><button class="full" type="submit">Sign in</button>
+    <p class="muted" style="font-size:12px;text-align:center">Prototype demo: any valid-looking ID and password (4+ characters) will open the dashboard.</p>
+  </form></div>
+</section>
+<section id="dashboard" class="page">
+  <div class="dash-head"><div><div class="eyebrow">Transport portal</div><h1>Student Dashboard</h1><p class="muted" style="margin:6px 0 0">Welcome, <span id="userName">Student</span></p></div><div style="display:flex;gap:10px;align-items:center"><span class="pill" id="rolePill">DAY SCHOLAR</span><button class="ghost" onclick="showPage('home')">Log out</button></div></div>
+  <div class="stats">
+    <div class="stat"><small>Assigned bus</small><strong>BUS-04</strong></div>
+    <div class="stat"><small>Available seats (demo)</small><strong id="seats">12 / 40</strong></div>
+    <div class="stat"><small>Next shuttle ETA</small><strong>5 min</strong></div>
+  </div>
+  <div class="dash-grid">
+    <div class="card"><h2>Shuttle tracking</h2><div class="map"><span class="pin a">📍</span><span class="pin b">🚌</span><span class="map-label">Illustrative route map</span></div><div class="route-row"><div class="route-icon">🚌</div><div class="info"><strong>Route A — Main Gate</strong><small>Bus BUS-04 · Expected in 5 minutes</small></div><span class="pill">On route</span></div><label for="route">Choose route</label><select id="route" onchange="filterRoute()"><option value="A">Route A — Main Gate</option><option value="B">Route B — City Campus</option><option value="C">Route C — Hostel</option></select><div id="routeDetails" class="status" style="display:block">Route A selected · 12 seats available · ETA 5 minutes</div></div>
+    <div class="card"><h2>Attendance</h2><p class="muted" style="font-size:13px">Mark your attendance for today's shuttle trip.</p><div class="route-row"><div class="route-icon">🗓️</div><div class="info"><strong>Today's trip</strong><small id="attendanceDate"></small></div></div><div id="attendanceStatus" class="pill" style="display:inline-block;background:#fff4d6;color:#925d00">Not marked</div><button class="full" id="attendanceBtn" onclick="markAttendance()">Mark attendance</button><div id="attendanceMessage" class="status" role="status"></div><div style="margin-top:22px"><h2>Announcements</h2><div class="announcement"><strong>Transport service update</strong><p>Please arrive at your designated stop a few minutes early.</p></div><div class="announcement"><strong>Route information</strong><p>Check your route details before starting your journey.</p></div></div></div>
+  </div>
+</section>
+</main>
+<footer><span>© 2026 Smart University Transport Management System</span><span>Making university travel simpler</span></footer>
+<script>
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function togglePassword(){const p=document.getElementById('password');const b=p.nextElementSibling;if(p.type==='password'){p.type='text';b.textContent='Hide'}else{p.type='password';b.textContent='Show'}}
+function login(e){e.preventDefault();const email=document.getElementById('email').value.trim();const password=document.getElementById('password').value;const err=document.getElementById('loginError');if(!email||password.length<4){err.textContent='Please enter an ID and a password of at least 4 characters.';return}err.textContent='';document.getElementById('userName').textContent=email.split('@')[0];document.getElementById('rolePill').textContent=document.getElementById('role').value.toUpperCase();showPage('dashboard')}
+function markAttendance(){const status=document.getElementById('attendanceStatus');status.textContent='Marked';status.style.background='#e1f7ec';status.style.color='#176b47';const btn=document.getElementById('attendanceBtn');btn.textContent='Attendance marked ✓';btn.disabled=true;btn.style.opacity='.65';const msg=document.getElementById('attendanceMessage');msg.textContent='Your attendance has been marked for this demo.';msg.style.display='block'}
+function filterRoute(){const r=document.getElementById('route').value;const data={A:'Route A selected · 12 seats available · ETA 5 minutes',B:'Route B selected · 8 seats available · ETA 10 minutes',C:'Route C selected · 18 seats available · ETA 3 minutes'};document.getElementById('routeDetails').textContent=data[r]}
+document.getElementById('attendanceDate').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric'});
+</script>
+</body>
+</html>
