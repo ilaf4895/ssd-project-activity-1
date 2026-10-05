@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Signup | Smart University Transport</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">SU</span><span>Smart University Transport</span></a><a class="back-link" href="index.html">← Home</a></header>
+<main class="auth-shell">
+  <section class="auth-card wide">
+    <span class="eyebrow">Student Registration</span><h1>Create your account</h1><p class="muted">Choose your actual student role. The dashboard will be tailored to it.</p>
+    <div id="message" class="message hidden"></div>
+    <form id="signupForm" class="form-grid">
+      <label>Full Name<input id="name" required placeholder="Your full name"></label>
+      <label>Student ID<input id="studentId" required placeholder="e.g. 22F-3723"></label>
+      <label>University Email<input id="email" type="email" required placeholder="student@university.edu"></label>
+      <label>Student Role<select id="role" required><option value="">Select role</option><option value="day-scholar">Day Scholar</option><option value="hostelite">Hostelite</option></select></label>
+      <label>Password<div class="password-wrap"><input id="password" type="password" minlength="4" required placeholder="Minimum 4 characters"><button type="button" class="eye" data-target="password">Show</button></div></label>
+      <label>Confirm Password<input id="confirmPassword" type="password" required placeholder="Repeat password"></label>
+      <div class="form-actions"><button class="btn primary" type="submit">Create Account</button><a class="btn secondary" href="login.html">Back to Login</a></div>
+    </form>
+  </section>
+</main>
+<script src="js/storage.js"></script><script src="js/auth.js"></script>
+</body>
+</html>

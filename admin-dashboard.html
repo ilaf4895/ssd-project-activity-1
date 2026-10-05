@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Smart University Transport</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">SU</span><span>Smart University Transport</span></a>
+  <nav><a class="active" href="admin-dashboard.html">Admin Dashboard</a><button class="nav-button" id="adminLogout">Logout</button></nav>
+</header>
+<main class="dashboard page-wrap">
+  <div class="welcome-row"><div><span class="eyebrow">Management Portal</span><h1>Transport Administration</h1><p class="muted">Create routes, create buses and assign each bus to a route.</p></div><span class="role-badge admin">ADMIN</span></div>
+
+  <section class="grid three stats">
+    <article class="stat-card"><span>Routes</span><strong id="routeCount">0</strong><small>Configured route records</small></article>
+    <article class="stat-card"><span>Buses</span><strong id="busCount">0</strong><small>Available buses</small></article>
+    <article class="stat-card"><span>Assignments</span><strong id="assignmentCount">0</strong><small>Buses with a route</small></article>
+  </section>
+
+  <section class="content-grid">
+    <article class="panel">
+      <div class="panel-head"><div><span class="eyebrow">01 · Route Management</span><h2>Create a route</h2></div></div>
+      <form id="routeForm" class="form-grid">
+        <label>Route Name<input id="routeName" required placeholder="e.g. Route A - Main Gate"></label>
+        <label>Route Code<input id="routeCode" required placeholder="e.g. A"></label>
+        <label class="full-row">Stops <span class="label-note">Separate stops with commas</span><input id="routeStops" required placeholder="Main Gate, Library, Hostel, Academic Block"></label>
+        <div class="form-actions"><button class="btn primary" type="submit">Create Route</button></div>
+      </form>
+    </article>
+
+    <article class="panel">
+      <div class="panel-head"><div><span class="eyebrow">02 · Bus Management</span><h2>Create a bus</h2></div></div>
+      <form id="busForm" class="form-grid">
+        <label>Bus Name / Number<input id="busName" required placeholder="e.g. Bus 01"></label>
+        <label>Capacity<input id="busCapacity" type="number" min="1" value="40" required></label>
+        <div class="form-actions"><button class="btn primary" type="submit">Create Bus</button></div>
+      </form>
+    </article>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><div><span class="eyebrow">03 · Assignment</span><h2>Assign route to bus</h2></div></div>
+    <form id="assignForm" class="form-grid three-cols">
+      <label>Bus<select id="assignBus" required></select></label>
+      <label>Route<select id="assignRoute" required></select></label>
+      <div class="form-actions align-end"><button class="btn primary" type="submit">Assign Route</button></div>
+    </form>
+  </section>
+
+  <section class="content-grid">
+    <article class="panel">
+      <div class="panel-head"><div><span class="eyebrow">Current Routes</span><h2>Routes & Stops</h2></div></div>
+      <div id="routesList" class="record-list"></div>
+    </article>
+    <article class="panel">
+      <div class="panel-head"><div><span class="eyebrow">Current Fleet</span><h2>Buses & Assignments</h2></div></div>
+      <div id="busesList" class="record-list"></div>
+    </article>
+  </section>
+</main>
+<footer>Admin view · Management actions are stored locally in this browser prototype.</footer>
+<script src="js/storage.js"></script><script src="js/admin.js"></script>
+</body>
+</html>

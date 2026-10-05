@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Smart University Transport</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">SU</span><span>Smart University Transport</span></a><a class="back-link" href="index.html">← Home</a></header>
+<main class="auth-shell">
+  <section class="auth-card">
+    <span class="eyebrow">Restricted Portal</span><h1>Transport Admin</h1><p class="muted">Management access for routes, buses and assignments.</p>
+    <div class="demo-note">Demo admin: <b>admin@transport.local</b> / <b>admin123</b></div>
+    <div id="message" class="message hidden"></div>
+    <form id="adminLoginForm">
+      <label>Email<input id="identifier" type="email" required value="admin@transport.local"></label>
+      <label>Password<input id="password" type="password" required value="admin123"></label>
+      <button class="btn primary full" type="submit">Open Admin Dashboard</button>
+    </form>
+  </section>
+</main>
+<script src="js/storage.js"></script><script src="js/auth.js"></script>
+</body>
+</html>

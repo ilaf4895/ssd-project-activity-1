@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Smart University Transport</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">SU</span><span>Smart University Transport</span></a>
+  <nav><a class="active" href="student-dashboard.html">Dashboard</a><button class="nav-button" id="logoutBtn">Logout</button></nav>
+</header>
+<main class="dashboard page-wrap">
+  <div class="welcome-row"><div><span class="eyebrow">Student Dashboard</span><h1 id="welcomeName">Welcome</h1><p id="roleText" class="muted"></p></div><span class="role-badge" id="roleBadge"></span></div>
+
+  <section class="grid four stats">
+    <article class="stat-card"><span>Assigned Bus</span><strong id="busStat">—</strong><small id="busMeta">Select a bus below</small></article>
+    <article class="stat-card"><span>Selected Stop</span><strong id="stopStat">—</strong><small>Route boarding point</small></article>
+    <article class="stat-card"><span>Seat</span><strong id="seatStat">Available</strong><small>Reservation status</small></article>
+    <article class="stat-card"><span>Attendance</span><strong id="attendanceStat">Not Marked</strong><small>Today's transport record</small></article>
+  </section>
+
+  <section class="content-grid">
+    <article class="panel">
+      <div class="panel-head"><div><span class="eyebrow">01 · Journey Setup</span><h2>Select your bus & stop</h2></div><span class="hint">Stop list changes with bus</span></div>
+      <div id="noBuses" class="empty hidden">No buses are available yet. Ask the Transport Admin to create and assign a bus.</div>
+      <div class="form-grid">
+        <label>Bus<select id="busSelect"></select></label>
+        <label>Route Stop<select id="stopSelect"></select></label>
+      </div>
+      <div class="selection-preview" id="selectionPreview"></div>
+      <div class="actions"><button class="btn primary" id="saveJourney">Save Journey</button><button class="btn secondary" id="refreshData">Refresh</button></div>
+    </article>
+
+    <article class="panel">
+      <div class="panel-head"><div><span class="eyebrow">02 · Seat</span><h2>Reservation</h2></div></div>
+      <p class="muted">Reserve a seat after selecting your bus and boarding stop.</p>
+      <div class="big-status" id="bookingStatus">Seat available</div>
+      <button class="btn primary full" id="bookingBtn">Reserve Seat</button>
+      <button class="btn danger full hidden" id="cancelBookingBtn">Cancel Reservation</button>
+    </article>
+  </section>
+
+  <section class="content-grid">
+    <article class="panel">
+      <div class="panel-head"><div><span class="eyebrow">03 · Attendance</span><h2>Transport attendance</h2></div></div>
+      <p class="muted">Mark attendance when you board your selected bus.</p>
+      <div class="attendance-box"><span id="attendanceLabel">Not marked for today</span><button class="btn secondary" id="attendanceBtn">Mark Attendance</button></div>
+    </article>
+    <article class="panel">
+      <div class="panel-head"><div><span class="eyebrow">04 · Updates</span><h2>Announcements</h2></div></div>
+      <div id="announcements" class="announcement-list"></div>
+    </article>
+  </section>
+</main>
+<footer>Student view · Access is limited to your own transport information.</footer>
+<script src="js/storage.js"></script><script src="js/student.js"></script>
+</body>
+</html>
